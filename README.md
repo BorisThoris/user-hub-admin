@@ -1,4 +1,4 @@
-# Angular Clarity User Management Demo
+# User Hub Admin
 
 A legacy Angular 9 portfolio demo for a small user-management workflow built with VMware Clarity UI. The app demonstrates Angular routing, reusable form components, localStorage-backed CRUD state, and Clarity-styled screens.
 
