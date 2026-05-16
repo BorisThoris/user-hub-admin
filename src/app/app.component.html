@@ -1,39 +1,34 @@
 <div>
   <header class="header header-2 customHeader">
     <button
-      disabled
-      style="opacity: 1;"
       class="btn customHeaderButton"
       routerLink="home"
-      routerLinkActive="btn-success"
       routerLinkActive
       #rlaHome="routerLinkActive"
       [ngClass]="rlaHome.isActive ? 'btn-success' : 'btn-inverse'"
+      [attr.aria-current]="rlaHome.isActive ? 'page' : null"
     >
-      1. Demo Steps
+      1. Demo Timeline
     </button>
     <button
-      disabled
-      style="opacity: 1;"
       class="btn customHeaderButton"
       routerLink="view-users"
-      routerLinkActive="btn-success"
       routerLinkActive
       #rlaAllUsers="routerLinkActive"
       [ngClass]="rlaAllUsers.isActive ? 'btn-success' : 'btn-inverse'"
+      [attr.aria-current]="rlaAllUsers.isActive ? 'page' : null"
     >
-      2. View All Users
+      2. User Directory
     </button>
     <button
-      disabled
-      style="opacity: 1;"
       class="btn customHeaderButton"
       routerLink="control-users"
       routerLinkActive
       #rlaControlAllUsers="routerLinkActive"
       [ngClass]="rlaControlAllUsers.isActive ? 'btn-success' : 'btn-inverse'"
+      [attr.aria-current]="rlaControlAllUsers.isActive ? 'page' : null"
     >
-      3. Control All Users
+      3. Manage Users
     </button>
   </header>
 

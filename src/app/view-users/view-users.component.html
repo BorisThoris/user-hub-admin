@@ -5,15 +5,15 @@
       style="margin-bottom: 50px !important;"
       routerLink="home"
     >
-      Go Back To Demo Steps
+      Back to demo timeline
     </button>
 
-    <div class="titleDiv">Your Users</div>
+    <div class="titleDiv">User Directory</div>
     <div class="subtitleDiv" *ngIf="users && users.length > 0">
-      Delete User By Clicking
+      Select a user card to remove that user.
     </div>
     <div class="subtitleDiv" *ngIf="users && users.length <= 0">
-      No users left
+      No users are currently stored.
     </div>
     <div class="usersContainer" *ngIf="users">
       <div class="clr-row" *ngFor="let user of users; let idx = index">

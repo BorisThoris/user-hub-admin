@@ -9,7 +9,7 @@
       required
     >
       <label for="basic" class="clr-control-label"
-        >How many users do you want to add ?</label
+        >How many demo users should be created?</label
       >
       <input
         class="clr-input customInputStyle"
@@ -24,7 +24,7 @@
       />
 
       <div style="font-size: 80%; color: rgba(128, 128, 128, 0.726);">
-        Count cannot be changed after Wizzard is openned
+        The count is locked while the user setup wizard is open.
       </div>
     </form>
 
@@ -37,7 +37,7 @@
         height: numberModalCount > 0 ? 'auto' : 0 + 'px'
       }"
     >
-      {{ storedUsers ? "Change Users" : "Open User Generation Wizard" }}
+      {{ storedUsers ? "Update users" : "Open user setup wizard" }}
     </button>
 
     <button
@@ -62,24 +62,24 @@
         height: storedUsers ? 'auto' : 0 + 'px'
       }"
     >
-      Go Back To Demo Steps
+      Back to demo timeline
     </button>
   </div>
 
   <clr-wizard #wizardxl [(clrWizardOpen)]="xlOpen">
-    <clr-wizard-title>XL Wizard (Default)</clr-wizard-title>
+    <clr-wizard-title>User setup wizard</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
     <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
     <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
     <clr-wizard-button [type]="'finish'" (click)="submit()"
-      >Finish Test</clr-wizard-button
+      >Save users</clr-wizard-button
     >
-    <clr-wizard-button (click)="submit()">Skip All</clr-wizard-button>
+    <clr-wizard-button (click)="submit()">Save all</clr-wizard-button>
 
     <clr-wizard-page *ngFor="let user of users; let idx = index">
       <form clrForm [formGroup]="reactiveModel">
-        <ng-template clrPageTitle>User</ng-template>
+        <ng-template clrPageTitle>User {{ idx + 1 }}</ng-template>
         <user-form-comp
           users="users"
           userName="{{ user.name }}"

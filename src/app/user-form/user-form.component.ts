@@ -22,7 +22,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     <!-- Spacer -->
     <div class="clr-form-control clr-row">
       <label for="example" class="clr-control-label clr-col-12 clr-col-md-2"
-        >Avatar Uri:
+        >Avatar URL:
       </label>
 
       <div class="clr-input-wrapper">

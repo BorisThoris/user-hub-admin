@@ -9,7 +9,7 @@
       [attr.shape]="circle.status ? 'success-standard' : 'circle'"
     ></clr-icon>
     <div class="clr-timeline-step-body">
-      <span class="clr-timeline-step-title">Step {{ circle.step }}</span>
+      <span class="clr-timeline-step-title">{{ circle.step }}</span>
       <span class="clr-timeline-step-description"
         >{{ circle.description }}
         <button
@@ -35,7 +35,7 @@
       (click)="resetCircles()"
       class="btn btn-sm resetStatesButton hoverableButton"
     >
-      Clear Demo State *Includes Users*
+      Reset demo state and users
     </button>
   </li>
 </ul>

@@ -16,8 +16,12 @@ body {
 }
 
 .customHeaderButton {
-  cursor: initial !important;
+  cursor: pointer !important;
   opacity: 1;
+}
+
+.customHeaderButton[aria-current='page'] {
+  font-weight: 600;
 }
 
 .pageContainerStyle {
