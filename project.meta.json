@@ -1,0 +1,165 @@
+{
+  "$schema": "./scripts/project.meta.schema.json",
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-03T20:39:08.827Z",
+  "generatedBy": "scripts/generate-project-meta.mjs",
+  "identity": {
+    "slug": "user-hub-admin",
+    "repoName": "Demo-Using-Clarity",
+    "packageName": "user-hub-admin",
+    "version": "0.0.0",
+    "title": "User Hub Admin",
+    "subtitle": "Angular admin dashboard",
+    "description": "A legacy Angular admin demo using browser-local state for user management and dashboard flows.",
+    "tags": [
+      "Angular",
+      "Admin UI",
+      "LocalStorage"
+    ],
+    "accent": "#06b6d4",
+    "classification": "web-app",
+    "showcaseTier": "more"
+  },
+  "links": {
+    "deploymentUrl": "https://user-hub-admin-git.pages.dev/",
+    "localUrl": "http://127.0.0.1:4109/",
+    "repository": "https://github.com/BorisThoris/user-hub-admin"
+  },
+  "runtime": {
+    "packageManager": "npm",
+    "buildCommand": "npm run build",
+    "buildOutput": "dist",
+    "runCommand": "npm start -- --host 127.0.0.1 --port 4109",
+    "devPort": 4109,
+    "scripts": [
+      "ng",
+      "start",
+      "build",
+      "test",
+      "lint",
+      "e2e",
+      "meta",
+      "meta:check"
+    ]
+  },
+  "capture": {
+    "route": "/"
+  },
+  "media": {
+    "source": "portfolio-capture",
+    "directory": "C:/Users/Gaming PC/Desktop/Repos/portfolio/public/project-shots/user-hub-admin/latest",
+    "primary": "/project-shots/user-hub-admin/latest/card.jpg",
+    "images": [
+      {
+        "profile": "card",
+        "file": "card.jpg",
+        "path": "/project-shots/user-hub-admin/latest/card.jpg",
+        "bytes": 88493,
+        "width": 1600,
+        "height": 900,
+        "capturedAt": "2026-08-27T12:15:29.253Z"
+      },
+      {
+        "profile": "desktop",
+        "file": "desktop.jpg",
+        "path": "/project-shots/user-hub-admin/latest/desktop.jpg",
+        "bytes": 82568,
+        "width": 1440,
+        "height": 900,
+        "capturedAt": "2026-08-27T12:15:31.301Z"
+      },
+      {
+        "profile": "full",
+        "file": "full.jpg",
+        "path": "/project-shots/user-hub-admin/latest/full.jpg",
+        "bytes": 70878,
+        "width": 1440,
+        "height": 900,
+        "capturedAt": "2026-08-27T12:15:35.772Z"
+      },
+      {
+        "profile": "mobile",
+        "file": "mobile.jpg",
+        "path": "/project-shots/user-hub-admin/latest/mobile.jpg",
+        "bytes": 36646,
+        "width": 430,
+        "height": 932,
+        "capturedAt": "2026-08-27T12:15:33.524Z"
+      }
+    ]
+  },
+  "stack": {
+    "framework": "Angular",
+    "language": "TypeScript",
+    "runtimeTargets": [
+      "web"
+    ],
+    "libraries": [
+      {
+        "name": "@angular/core",
+        "version": "~9.1.9"
+      },
+      {
+        "name": "typescript",
+        "version": "~3.8.3"
+      }
+    ],
+    "testing": [
+      "karma"
+    ],
+    "dependencyCount": 15,
+    "devDependencyCount": 18
+  },
+  "metrics": {
+    "sourceFiles": 48,
+    "testFiles": 8,
+    "sourceLines": 1849,
+    "largestDirectories": [
+      {
+        "directory": "src",
+        "files": 32
+      },
+      {
+        "directory": "docs",
+        "files": 10
+      },
+      {
+        "directory": "e2e",
+        "files": 3
+      },
+      {
+        "directory": "scripts",
+        "files": 2
+      },
+      {
+        "directory": ".",
+        "files": 1
+      }
+    ],
+    "hasReadme": true,
+    "hasTests": true,
+    "hasCi": false,
+    "hasDocs": true
+  },
+  "scores": {
+    "priorityScore": 66,
+    "demoabilityScore": 72,
+    "depthScore": 64,
+    "polishScore": 68,
+    "uniquenessScore": 62,
+    "maintenanceScore": 62
+  },
+  "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
+  "git": {
+    "branch": "master",
+    "head": "70e1604",
+    "lastCommitDate": "2026-05-16T17:37:41+03:00",
+    "lastCommitSubject": "AI refine user-hub-admin: Polish visible admin flow copy and navigation",
+    "commitCount": 13,
+    "remote": "https://github.com/BorisThoris/user-hub-admin.git"
+  },
+  "readme": {
+    "file": "README.md",
+    "heading": "User Hub Admin"
+  }
+}
