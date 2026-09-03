@@ -523,7 +523,10 @@ function pruneEmpty(value) {
 
 function stripVolatile(value) {
   const clone = JSON.parse(JSON.stringify(value));
+  // Volatile by nature: these move with time and with commits (including the
+  // commit that records this very file), so they never make metadata 'stale'.
   delete clone.generatedAt;
+  delete clone.git;
   if (clone.media?.images) {
     clone.media.images = clone.media.images.map((image) => {
       const copy = { ...image };

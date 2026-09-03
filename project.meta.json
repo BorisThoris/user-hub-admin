@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T20:39:08.827Z",
+  "generatedAt": "2026-09-03T20:45:32.004Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -113,7 +113,7 @@
   "metrics": {
     "sourceFiles": 48,
     "testFiles": 8,
-    "sourceLines": 1849,
+    "sourceLines": 1852,
     "largestDirectories": [
       {
         "directory": "src",
@@ -152,10 +152,10 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "70e1604",
-    "lastCommitDate": "2026-05-16T17:37:41+03:00",
-    "lastCommitSubject": "AI refine user-hub-admin: Polish visible admin flow copy and navigation",
-    "commitCount": 13,
+    "head": "668ab6b",
+    "lastCommitDate": "2026-09-03T23:42:37+03:00",
+    "lastCommitSubject": "Wire up the meta scripts",
+    "commitCount": 15,
     "remote": "https://github.com/BorisThoris/user-hub-admin.git"
   },
   "readme": {
