@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T20:45:32.004Z",
+  "generatedAt": "2026-09-03T21:50:30.342Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -39,52 +39,64 @@
       "lint",
       "e2e",
       "meta",
-      "meta:check"
+      "meta:check",
+      "shots",
+      "social",
+      "social:check"
     ]
   },
   "capture": {
     "route": "/"
   },
   "media": {
-    "source": "portfolio-capture",
-    "directory": "C:/Users/Gaming PC/Desktop/Repos/portfolio/public/project-shots/user-hub-admin/latest",
-    "primary": "/project-shots/user-hub-admin/latest/card.jpg",
+    "source": "repo-local",
+    "directory": "C:/Users/Gaming PC/Desktop/Repos/Demo-Using-Clarity/project-media",
+    "primary": "project-media/card.jpg",
     "images": [
       {
         "profile": "card",
         "file": "card.jpg",
-        "path": "/project-shots/user-hub-admin/latest/card.jpg",
-        "bytes": 88493,
+        "path": "project-media/card.jpg",
+        "bytes": 88314,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-08-27T12:15:29.253Z"
+        "capturedAt": "2026-09-03T21:36:12.167Z"
       },
       {
         "profile": "desktop",
         "file": "desktop.jpg",
-        "path": "/project-shots/user-hub-admin/latest/desktop.jpg",
-        "bytes": 82568,
+        "path": "project-media/desktop.jpg",
+        "bytes": 82313,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-08-27T12:15:31.301Z"
+        "capturedAt": "2026-09-03T21:36:13.814Z"
       },
       {
         "profile": "full",
         "file": "full.jpg",
-        "path": "/project-shots/user-hub-admin/latest/full.jpg",
-        "bytes": 70878,
+        "path": "project-media/full.jpg",
+        "bytes": 70906,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-08-27T12:15:35.772Z"
+        "capturedAt": "2026-09-03T21:36:17.078Z"
       },
       {
         "profile": "mobile",
         "file": "mobile.jpg",
-        "path": "/project-shots/user-hub-admin/latest/mobile.jpg",
-        "bytes": 36646,
+        "path": "project-media/mobile.jpg",
+        "bytes": 36033,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-08-27T12:15:33.524Z"
+        "capturedAt": "2026-09-03T21:36:15.417Z"
+      },
+      {
+        "profile": "og",
+        "file": "og.jpg",
+        "path": "project-media/og.jpg",
+        "bytes": 63816,
+        "width": 1200,
+        "height": 630,
+        "capturedAt": "2026-09-03T21:36:18.705Z"
       }
     ]
   },
@@ -111,9 +123,9 @@
     "devDependencyCount": 18
   },
   "metrics": {
-    "sourceFiles": 48,
+    "sourceFiles": 50,
     "testFiles": 8,
-    "sourceLines": 1852,
+    "sourceLines": 2313,
     "largestDirectories": [
       {
         "directory": "src",
@@ -124,12 +136,12 @@
         "files": 10
       },
       {
-        "directory": "e2e",
-        "files": 3
+        "directory": "scripts",
+        "files": 4
       },
       {
-        "directory": "scripts",
-        "files": 2
+        "directory": "e2e",
+        "files": 3
       },
       {
         "directory": ".",
@@ -152,10 +164,10 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "668ab6b",
-    "lastCommitDate": "2026-09-03T23:42:37+03:00",
-    "lastCommitSubject": "Wire up the meta scripts",
-    "commitCount": 15,
+    "head": "64cbc2f",
+    "lastCommitDate": "2026-09-03T23:46:15+03:00",
+    "lastCommitSubject": "Refresh project metadata",
+    "commitCount": 16,
     "remote": "https://github.com/BorisThoris/user-hub-admin.git"
   },
   "readme": {

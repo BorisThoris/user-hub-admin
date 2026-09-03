@@ -382,10 +382,13 @@ function git(gitArgs) {
 // ------------------------------------------------------------------- media
 
 function mediaSourceDir() {
-  const configured = config.media?.sourceDir;
-  if (configured && fs.existsSync(configured)) return { directory: configured, source: 'portfolio-capture' };
+  // The repo's own shots win: they were taken by this project's capture recipe
+  // and they travel with the repository. The portfolio capture directory is the
+  // fallback for projects that have not photographed themselves yet.
   const local = path.join(repoRoot, 'project-media');
   if (fs.existsSync(local)) return { directory: local, source: 'repo-local' };
+  const configured = config.media?.sourceDir;
+  if (configured && fs.existsSync(configured)) return { directory: configured, source: 'portfolio-capture' };
   if (configured) return { directory: configured, source: 'portfolio-capture-missing' };
   return { directory: '', source: 'none' };
 }
@@ -397,7 +400,9 @@ function collectMedia() {
     return { source: found.source, directory: directory ? toPosix(directory) : '', images: [], primary: '' };
   }
 
-  const prefix = config.media?.publicPathPrefix;
+  // publicPathPrefix describes where the portfolio site serves these shots from.
+  // A repo's own copies are addressed by their path inside the repo instead.
+  const prefix = found.source === 'repo-local' ? undefined : config.media?.publicPathPrefix;
   const images = describeImages(directory, prefix);
 
   // A capture directory sits under <shots>/<slug>/latest; any loose image in the

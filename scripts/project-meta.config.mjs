@@ -52,6 +52,15 @@ export default {
   analysisNotes:
     "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
 
+  // Where the link-preview card lives: the page head that carries the Open
+  // Graph tags, and the static directory the image is published from.
+  social: {
+    "htmlFile": "src/index.html",
+    "staticDir": "src/assets",
+    "imageName": "og-image.jpg",
+    "imageUrlPath": "/assets/og-image.jpg"
+  },
+
   media: {
     sourceDir: path.join(portfolioRoot, "public", "project-shots", "user-hub-admin", "latest"),
     publicPathPrefix: "/project-shots/user-hub-admin/latest",
