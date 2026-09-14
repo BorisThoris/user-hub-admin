@@ -17,6 +17,7 @@
 // (portfolio/scripts/meta/install-project-meta.mjs). Edit the template there,
 // not the copies, or the next install will overwrite your change.
 
+import { Buffer } from 'node:buffer';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -279,7 +280,7 @@ function collectMetrics(root) {
 
   function walk(dir, depth) {
     if (depth > 12) return;
-    let entries = [];
+    let entries;
     try {
       entries = fs.readdirSync(dir, { withFileTypes: true });
     } catch {
@@ -330,7 +331,7 @@ function readReadme(root) {
     .find((filePath) => fs.existsSync(filePath));
   if (!candidate) return { file: '', heading: '', description: '' };
 
-  let contents = '';
+  let contents;
   try {
     contents = fs.readFileSync(candidate, 'utf8');
   } catch {

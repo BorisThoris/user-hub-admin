@@ -15,7 +15,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, URL } from 'node:url';
 
 import config from './project-meta.config.mjs';
 
@@ -88,9 +88,14 @@ const eol = html.includes('\r\n') ? '\r\n' : '\n';
 const indent = detectHeadIndent(html);
 const block = tags.map((line) => indent + line).join(eol);
 
+// A repo's formatter may re-wrap the generated tags (prettier puts one
+// attribute per line); that is the same markup, so it is not drift.
+const blockCurrent = htmlPath && html.includes(START) && html.includes(END) &&
+  normalizeMarkup(html.slice(html.indexOf(START), html.indexOf(END) + END.length)) === normalizeMarkup(block);
+
 let next = html;
-if (!htmlPath) {
-  // nothing to inject; the head lives in code
+if (!htmlPath || blockCurrent) {
+  // nothing to inject: the head lives in code, or the block is already right
 } else if (html.includes(START) && html.includes(END)) {
   // The existing block already sits at the right indentation; replace it in place.
   next = html.slice(0, html.indexOf(START)) + block.trimStart() + html.slice(html.indexOf(END) + END.length);
@@ -152,6 +157,10 @@ function tag(attribute, name, content) {
 
 function escapeAttribute(value) {
   return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function normalizeMarkup(text) {
+  return text.replace(/\s+/g, ' ').replace(/\s*\/>/g, ' />').trim();
 }
 
 function detectHeadIndent(html) {

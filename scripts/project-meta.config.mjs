@@ -61,6 +61,13 @@ export default {
     "imageUrlPath": "/assets/og-image.jpg"
   },
 
+  // The icon set is rendered from favicon.svg by scripts/generate-app-icons.mjs.
+  icons: {
+    "background": "#083344",
+    "themeColor": "#083344",
+    "shortName": "User Hub"
+  },
+
   media: {
     sourceDir: path.join(portfolioRoot, "public", "project-shots", "user-hub-admin", "latest"),
     publicPathPrefix: "/project-shots/user-hub-admin/latest",

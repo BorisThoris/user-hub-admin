@@ -145,10 +145,18 @@ async function settle(page) {
 
   for (const action of capture.actions ?? []) {
     try {
+      if (action.type === 'wait') {
+        await page.waitForTimeout(action.ms ?? 500);
+        continue;
+      }
       const locator = locatorFor(page, action.target);
-      if (action.type === 'click') await locator.click({ timeout: action.timeoutMs ?? 15000 });
-      else if (action.type === 'waitFor') await locator.waitFor({ state: action.state ?? 'visible', timeout: action.timeoutMs ?? 15000 });
-      else if (action.type === 'wait') await page.waitForTimeout(action.ms ?? 500);
+      const timeout = action.timeoutMs ?? 15000;
+      if (action.type === 'click') await locator.click({ timeout });
+      else if (action.type === 'check') await locator.check({ timeout });
+      else if (action.type === 'uncheck') await locator.uncheck({ timeout });
+      else if (action.type === 'fill') await locator.fill(action.value ?? '', { timeout });
+      else if (action.type === 'waitFor') await locator.waitFor({ state: action.state ?? 'visible', timeout });
+      else throw new Error('unknown action type ' + action.type);
     } catch (error) {
       console.warn('[shots]   action skipped (' + (action.label ?? action.type) + '): ' + String(error.message).split('\n')[0]);
     }
@@ -165,7 +173,7 @@ function locatorFor(page, target) {
   if (!target) throw new Error('action has no target');
   if (target.role) return page.getByRole(target.role, { name: target.name, exact: target.exact ?? false });
   if (target.text) return page.getByText(target.text, { exact: target.exact ?? false });
-  return page.locator(target.selector ?? target);
+  return page.locator(target.selector ?? target.css ?? target);
 }
 
 // ------------------------------------------------------------------ runtime
@@ -199,7 +207,7 @@ async function startLocalServer() {
 
 async function probe(url) {
   try {
-    const response = await fetch(url, { redirect: 'follow' });
+    const response = await globalThis.fetch(url, { redirect: 'follow' });
     return response.ok || response.status === 304;
   } catch {
     return false;
@@ -263,5 +271,5 @@ function valueOf(flag) {
 }
 
 function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => globalThis.setTimeout(resolve, ms));
 }

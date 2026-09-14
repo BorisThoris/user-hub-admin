@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T21:50:30.342Z",
+  "generatedAt": "2026-09-14T20:41:26.492Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -42,7 +42,10 @@
       "meta:check",
       "shots",
       "social",
-      "social:check"
+      "social:check",
+      "icons",
+      "icons:check",
+      "meta:refresh"
     ]
   },
   "capture": {
@@ -123,9 +126,9 @@
     "devDependencyCount": 18
   },
   "metrics": {
-    "sourceFiles": 50,
+    "sourceFiles": 52,
     "testFiles": 8,
-    "sourceLines": 2313,
+    "sourceLines": 2789,
     "largestDirectories": [
       {
         "directory": "src",
@@ -137,7 +140,7 @@
       },
       {
         "directory": "scripts",
-        "files": 4
+        "files": 6
       },
       {
         "directory": "e2e",
@@ -164,10 +167,10 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "64cbc2f",
-    "lastCommitDate": "2026-09-03T23:46:15+03:00",
-    "lastCommitSubject": "Refresh project metadata",
-    "commitCount": 16,
+    "head": "53b835a",
+    "lastCommitDate": "2026-09-04T00:53:30+03:00",
+    "lastCommitSubject": "Wire up the shots and social scripts",
+    "commitCount": 18,
     "remote": "https://github.com/BorisThoris/user-hub-admin.git"
   },
   "readme": {

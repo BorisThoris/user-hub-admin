@@ -1,0 +1,17 @@
+{
+  "slug": "user-hub-admin",
+  "source": "src/assets/favicon.svg",
+  "sourceHash": "0d02b953820a2a66",
+  "outputDir": "src/assets",
+  "urlPrefix": "/assets/",
+  "renderedAt": "2026-09-14T20:40:07.034Z",
+  "files": [
+    "favicon.ico",
+    "apple-touch-icon.png",
+    "icon-192.png",
+    "icon-512.png",
+    "icon-maskable-512.png",
+    "favicon.svg",
+    "site.webmanifest"
+  ]
+}
