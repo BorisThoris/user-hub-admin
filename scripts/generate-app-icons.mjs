@@ -51,6 +51,13 @@ if (mode === 'skip') {
   console.log('[icons] ' + slug + ': icons are not managed for this project (icons.mode = skip).');
   process.exit(0);
 }
+// Copies, archived experiments and vendored templates are never deployed, so
+// there is no page to give an icon set to.
+const unmanagedClassifications = new Set(['duplicate', 'archived', 'template', 'hosted-only']);
+if (unmanagedClassifications.has(config.classification) && !icons.mode) {
+  console.log('[icons] ' + slug + ': ' + config.classification + ' project, no icon set to manage.');
+  process.exit(0);
+}
 
 // A project whose head is rendered from code (Next, Nuxt, an Angular service)
 // keeps its <link> tags there; this script still renders and checks the files.
@@ -58,6 +65,10 @@ const renderedFrom = icons.renderedFrom ?? social.renderedFrom ?? null;
 const htmlFile = renderedFrom ? null : (icons.htmlFile ?? social.htmlFile ?? findHtml());
 const htmlPath = htmlFile ? path.join(repoRoot, htmlFile) : null;
 if (!renderedFrom && (!htmlPath || !fs.existsSync(htmlPath))) {
+  if (!curated.deploymentUrl) {
+    console.log('[icons] ' + slug + ': not deployed and no page head found; nothing to manage.');
+    process.exit(0);
+  }
   console.error('[icons] ' + slug + ': no page head found. Set icons.htmlFile in scripts/project-meta.config.mjs.');
   process.exit(1);
 }
@@ -102,6 +113,10 @@ if (mode === 'check') {
 const sourceRelative = (icons.source ?? outputDirRelative + '/favicon.svg').split(path.sep).join('/');
 const sourcePath = path.join(repoRoot, sourceRelative);
 if (!fs.existsSync(sourcePath)) {
+  if (!curated.deploymentUrl) {
+    console.log('[icons] ' + slug + ': not deployed and no ' + sourceRelative + ' yet; add one to get an icon set.');
+    process.exit(0);
+  }
   console.error('[icons] ' + slug + ': no source icon at ' + sourceRelative + '. Add an SVG there or set icons.source.');
   process.exit(1);
 }
@@ -116,7 +131,9 @@ if (!themeColor) {
 const background = icons.background ?? themeColor;
 // The rendered pixels depend on the SVG and on the fill behind the padded
 // icons, so both go into the key that decides whether a re-render is due.
-const sourceHash = createHash('sha256').update(svg + '\n' + background).digest('hex').slice(0, 16);
+// Line endings are normalised first, so a CRLF checkout of the same SVG does
+// not read as a change.
+const sourceHash = createHash('sha256').update(svg.replace(/\r\n/g, '\n') + '\n' + background).digest('hex').slice(0, 16);
 const name = icons.name ?? curated.title ?? slug;
 const shortName = icons.shortName ?? (name.length <= 12 ? name : name.split(/[\s:-]+/)[0]);
 const description = icons.description ?? curated.description ?? curated.subtitle ?? '';

@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T20:41:26.492Z",
+  "generatedAt": "2026-09-14T20:52:46.045Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -128,7 +128,7 @@
   "metrics": {
     "sourceFiles": 52,
     "testFiles": 8,
-    "sourceLines": 2789,
+    "sourceLines": 2806,
     "largestDirectories": [
       {
         "directory": "src",
@@ -167,10 +167,10 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "53b835a",
-    "lastCommitDate": "2026-09-04T00:53:30+03:00",
-    "lastCommitSubject": "Wire up the shots and social scripts",
-    "commitCount": 18,
+    "head": "17e7746",
+    "lastCommitDate": "2026-09-14T23:43:04+03:00",
+    "lastCommitSubject": "Add the icon set and the one-command metadata refresh",
+    "commitCount": 19,
     "remote": "https://github.com/BorisThoris/user-hub-admin.git"
   },
   "readme": {
