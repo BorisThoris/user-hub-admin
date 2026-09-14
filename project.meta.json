@@ -1,11 +1,11 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T21:36:24.369Z",
+  "generatedAt": "2026-09-14T22:05:09.694Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
-    "repoName": "Demo-Using-Clarity",
+    "repoName": "user-hub-admin",
     "packageName": "user-hub-admin",
     "version": "0.0.0",
     "title": "User Hub Admin",
@@ -128,7 +128,7 @@
   "metrics": {
     "sourceFiles": 52,
     "testFiles": 8,
-    "sourceLines": 2817,
+    "sourceLines": 2826,
     "largestDirectories": [
       {
         "directory": "src",
@@ -167,10 +167,10 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "b0e4e93",
-    "lastCommitDate": "2026-09-14T23:58:01+03:00",
-    "lastCommitSubject": "Sync the metadata toolkit scripts and regenerate project.meta.json",
-    "commitCount": 20,
+    "head": "1ad26fb",
+    "lastCommitDate": "2026-09-15T00:39:10+03:00",
+    "lastCommitSubject": "Gate pushes on a current link-preview card and icon set",
+    "commitCount": 21,
     "remote": "https://github.com/BorisThoris/user-hub-admin.git"
   },
   "readme": {

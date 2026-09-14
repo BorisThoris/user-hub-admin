@@ -1,0 +1,81 @@
+# After every deployment of the production branch, photograph the live site,
+# publish the link-preview card, render the icons, regenerate
+# project.meta.json and commit the result back. The portfolio pulls
+# project-media/ from this branch on its own schedule.
+#
+# The bot's own commit is tagged [meta-bot] and is pushed with GITHUB_TOKEN, so
+# it never re-triggers this workflow; Cloudflare still redeploys it, which is
+# how the new og-image.jpg goes live.
+#
+# Installed by the portfolio meta toolkit; edit the template there.
+name: Refresh project metadata
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: project-meta-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  checks: read
+
+jobs:
+  refresh:
+    name: Screenshots, card, icons and metadata
+    if: ${{ !contains(github.event.head_commit.message, '[meta-bot]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: master
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Wait for the Cloudflare Pages deployment of this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sha=$(git rev-parse HEAD)
+          echo "waiting for Cloudflare Pages to deploy $sha"
+          for i in $(seq 1 60); do
+            state=$(gh api "repos/${{ github.repository }}/commits/$sha/check-runs" \
+              -q '[.check_runs[] | select(.name | startswith("Cloudflare Pages"))] | first | "\(.status) \(.conclusion)"' 2>/dev/null || true)
+            echo "  $i: ${state:-no check yet}"
+            case "$state" in
+              "completed success") echo "deployed"; sleep 45; exit 0 ;;
+              "completed failure"|"completed cancelled"|"completed timed_out") echo "Cloudflare build failed"; exit 1 ;;
+            esac
+            sleep 30
+          done
+          echo "gave up waiting for the deployment"; exit 1
+
+      - name: Install a browser for the screenshots
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1
+          npx playwright install --with-deps chromium
+
+      - name: Refresh screenshots, card, icons and metadata
+        env:
+          PORTFOLIO_ROOT: /tmp/pw
+        run: node scripts/refresh-project-meta.mjs
+
+      - name: Commit what changed
+        run: |
+          git config user.name "project-meta bot"
+          git config user.email "project-meta-bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+            exit 0
+          fi
+          git commit -m "Refresh screenshots, card, icons and metadata [meta-bot]"
+          git push origin HEAD:master

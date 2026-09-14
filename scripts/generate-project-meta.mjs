@@ -60,7 +60,9 @@ const meta = pruneEmpty({
 
   identity: pruneEmpty({
     slug: config.slug,
-    repoName: path.basename(repoRoot),
+    // The GitHub repository name, so a worktree or a CI checkout folder does
+    // not leak into the metadata; the folder name is the fallback.
+    repoName: repoNameFromRemote() || path.basename(repoRoot),
     packageName: packageJson?.name ?? '',
     version: packageJson?.version ?? '',
     title: curated.title ?? titleFromSlug(config.slug),
@@ -346,6 +348,13 @@ function readReadme(root) {
     .find((line) => line.trim().length > 40);
 
   return { file: path.basename(candidate), heading, description: paragraph ? paragraph.trim() : '' };
+}
+
+function repoNameFromRemote() {
+  const url = readRepositoryUrl();
+  if (!url) return '';
+  const match = /([^/:]+?)(?:[.]git)?[/]?$/.exec(url.trim());
+  return match ? match[1] : '';
 }
 
 function readRepositoryUrl() {
