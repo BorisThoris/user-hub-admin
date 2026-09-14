@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T22:05:09.694Z",
+  "generatedAt": "2026-09-14T22:27:09.852Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -53,53 +53,53 @@
   },
   "media": {
     "source": "repo-local",
-    "directory": "C:/Users/Gaming PC/Desktop/Repos/Demo-Using-Clarity/project-media",
+    "directory": "/home/runner/work/user-hub-admin/user-hub-admin/project-media",
     "primary": "project-media/card.jpg",
     "images": [
       {
         "profile": "card",
         "file": "card.jpg",
         "path": "project-media/card.jpg",
-        "bytes": 88314,
+        "bytes": 87127,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-09-03T21:36:12.167Z"
+        "capturedAt": "2026-09-14T22:27:03.085Z"
       },
       {
         "profile": "desktop",
         "file": "desktop.jpg",
         "path": "project-media/desktop.jpg",
-        "bytes": 82313,
+        "bytes": 81239,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-03T21:36:13.814Z"
+        "capturedAt": "2026-09-14T22:27:04.747Z"
       },
       {
         "profile": "full",
         "file": "full.jpg",
         "path": "project-media/full.jpg",
-        "bytes": 70906,
+        "bytes": 69143,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-03T21:36:17.078Z"
+        "capturedAt": "2026-09-14T22:27:08.030Z"
       },
       {
         "profile": "mobile",
         "file": "mobile.jpg",
         "path": "project-media/mobile.jpg",
-        "bytes": 36033,
+        "bytes": 35234,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-09-03T21:36:15.417Z"
+        "capturedAt": "2026-09-14T22:27:06.353Z"
       },
       {
         "profile": "og",
         "file": "og.jpg",
         "path": "project-media/og.jpg",
-        "bytes": 63816,
+        "bytes": 63344,
         "width": 1200,
         "height": 630,
-        "capturedAt": "2026-09-03T21:36:18.705Z"
+        "capturedAt": "2026-09-14T22:27:09.741Z"
       }
     ]
   },
@@ -167,11 +167,11 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "1ad26fb",
-    "lastCommitDate": "2026-09-15T00:39:10+03:00",
-    "lastCommitSubject": "Gate pushes on a current link-preview card and icon set",
-    "commitCount": 21,
-    "remote": "https://github.com/BorisThoris/user-hub-admin.git"
+    "head": "850a74d",
+    "lastCommitDate": "2026-09-15T01:05:14+03:00",
+    "lastCommitSubject": "Refresh screenshots, card, icons and metadata after every deployment",
+    "commitCount": 22,
+    "remote": "https://github.com/BorisThoris/user-hub-admin"
   },
   "readme": {
     "file": "README.md",

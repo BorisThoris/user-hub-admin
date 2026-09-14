@@ -1,6 +1,6 @@
 {
   "slug": "user-hub-admin",
-  "capturedAt": "2026-09-03T21:36:18.781Z",
+  "capturedAt": "2026-09-14T22:27:09.763Z",
   "source": "deployment",
   "url": "https://user-hub-admin-git.pages.dev/",
   "recipe": {
@@ -12,7 +12,7 @@
       "file": "card.jpg",
       "width": 1600,
       "height": 900,
-      "bytes": 88314,
+      "bytes": 87127,
       "status": "captured"
     },
     {
@@ -20,7 +20,7 @@
       "file": "desktop.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 82313,
+      "bytes": 81239,
       "status": "captured"
     },
     {
@@ -28,7 +28,7 @@
       "file": "mobile.jpg",
       "width": 430,
       "height": 932,
-      "bytes": 36033,
+      "bytes": 35234,
       "status": "captured"
     },
     {
@@ -36,7 +36,7 @@
       "file": "full.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 70906,
+      "bytes": 69143,
       "status": "captured"
     },
     {
@@ -44,7 +44,7 @@
       "file": "og.jpg",
       "width": 1200,
       "height": 630,
-      "bytes": 63816,
+      "bytes": 63344,
       "status": "captured"
     }
   ]
