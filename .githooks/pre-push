@@ -1,0 +1,30 @@
+#!/bin/sh
+# Pre-push gate from the portfolio meta toolkit: refuses to push while the
+# link-preview card (Open Graph tags + published og-image.jpg) or the icon set
+# has drifted from what scripts/project-meta.config.mjs and favicon.svg say.
+# A stale project.meta.json only warns, because its source counts move with
+# every commit; refresh it on release with `npm run meta:refresh`.
+#
+# Bypass once with:  git push --no-verify
+# Installed by the portfolio meta toolkit (git config core.hooksPath .githooks).
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+if [ ! -f scripts/refresh-project-meta.mjs ]; then
+  exit 0
+fi
+
+if [ -n "$SKIP_META_CHECK" ]; then
+  echo "[pre-push] SKIP_META_CHECK set; skipping the card/icon check."
+  exit 0
+fi
+
+node scripts/refresh-project-meta.mjs --check --no-shots --warn-meta
+status=$?
+if [ $status -ne 0 ]; then
+  echo ""
+  echo "[pre-push] the link-preview card or icon set is out of date."
+  echo "           Fix:    npm run social && npm run icons   (or npm run meta:refresh -- --no-shots)"
+  echo "           Bypass: git push --no-verify"
+  exit $status
+fi

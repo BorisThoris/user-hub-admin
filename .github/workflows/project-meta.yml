@@ -1,0 +1,21 @@
+# Verifies the link-preview card and icon set on every push, the same check
+# the pre-push hook runs locally. A stale project.meta.json only warns.
+#
+# Installed by the portfolio meta toolkit; edit the template there.
+name: Project metadata
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  card-and-icons:
+    name: Card, icons and metadata are current
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # The check needs no dependencies: it compares files and head tags only.
+      - run: node scripts/refresh-project-meta.mjs --check --no-shots --warn-meta

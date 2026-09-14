@@ -8,6 +8,10 @@
 //   npm run meta:refresh -- --no-shots      # keep the current screenshots
 //   npm run meta:refresh -- --source=local  # photograph the dev server instead
 //   npm run meta:refresh -- --check         # verify only; non-zero exit on drift
+//   npm run meta:refresh -- --check --warn-meta
+//       # what the pre-push hook and CI run: the card and icons must be current,
+//       # a stale project.meta.json only warns (its source counts move with
+//       # every commit, so it is refreshed on release, not on every push)
 //
 // Each step is its own script (shots, social, icons, meta) and can still be run
 // alone; this only sequences them and stops at the first failure.
@@ -22,6 +26,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const checkOnly = args.includes('--check');
 const skipShots = args.includes('--no-shots');
+const warnMeta = args.includes('--warn-meta');
 const shotArgs = args.filter((argument) =>
   argument.startsWith('--source=') || argument.startsWith('--url=') || argument.startsWith('--profiles='));
 
@@ -29,14 +34,20 @@ const steps = [];
 if (!checkOnly && !skipShots) steps.push({ label: 'shots', script: 'capture-project-shots.mjs', args: shotArgs });
 steps.push({ label: 'social', script: 'generate-social-preview.mjs', args: checkOnly ? ['--check'] : [] });
 steps.push({ label: 'icons', script: 'generate-app-icons.mjs', args: checkOnly ? ['--check'] : [] });
-steps.push({ label: 'meta', script: 'generate-project-meta.mjs', args: checkOnly ? ['--check'] : [] });
+steps.push({ label: 'meta', script: 'generate-project-meta.mjs', args: checkOnly ? ['--check'] : [], warnOnly: checkOnly && warnMeta });
 
+let warned = false;
 for (const step of steps) {
   console.log('\n[refresh] ' + step.label + (step.args.length > 0 ? ' ' + step.args.join(' ') : ''));
   const run = spawnSync(process.execPath, [path.join(scriptDir, step.script), ...step.args], { stdio: 'inherit' });
+  if (run.status !== 0 && step.warnOnly) {
+    console.warn('[refresh] warning: ' + step.label + ' is stale (run: npm run meta) - not blocking.');
+    warned = true;
+    continue;
+  }
   if (run.status !== 0) {
     console.error('\n[refresh] stopped: ' + step.label + ' exited with ' + run.status);
     process.exit(run.status ?? 1);
   }
 }
-console.log('\n[refresh] ' + (checkOnly ? 'everything is up to date.' : 'done.'));
+console.log('\n[refresh] ' + (checkOnly ? (warned ? 'card and icons are current; metadata wants a refresh.' : 'everything is up to date.') : 'done.'));
