@@ -28,7 +28,9 @@ jobs:
     name: Screenshots, card, icons and metadata
     if: ${{ !contains(github.event.head_commit.message, '[meta-bot]') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # Cloudflare queues builds account-wide, so a burst of pushes can hold one
+    # deployment for well over half an hour before it even starts.
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,7 +46,7 @@ jobs:
         run: |
           sha=$(git rev-parse HEAD)
           echo "waiting for Cloudflare Pages to deploy $sha"
-          for i in $(seq 1 60); do
+          for i in $(seq 1 180); do
             state=$(gh api "repos/${{ github.repository }}/commits/$sha/check-runs" \
               -q '[.check_runs[] | select(.name | startswith("Cloudflare Pages"))] | first | "\(.status) \(.conclusion)"' 2>/dev/null || true)
             echo "  $i: ${state:-no check yet}"
