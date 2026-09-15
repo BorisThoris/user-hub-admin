@@ -1,7 +1,7 @@
 {
   "name": "User Hub Admin",
   "short_name": "User Hub",
-  "description": "A legacy Angular admin demo using browser-local state for user management and dashboard flows.",
+  "description": "An Angular admin panel built with VMware Clarity: create, view, edit and delete users from a dashboard with reusable form components and avatar fallbacks, with every record kept in the browser so the demo needs no server.",
   "start_url": "/assets/",
   "scope": "/assets/",
   "display": "standalone",

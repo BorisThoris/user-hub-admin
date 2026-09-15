@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T22:27:09.852Z",
+  "generatedAt": "2026-09-15T12:15:32.528Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -9,12 +9,13 @@
     "packageName": "user-hub-admin",
     "version": "0.0.0",
     "title": "User Hub Admin",
-    "subtitle": "Angular admin dashboard",
-    "description": "A legacy Angular admin demo using browser-local state for user management and dashboard flows.",
+    "subtitle": "A Clarity-styled admin panel for managing users",
+    "description": "An Angular admin panel built with VMware Clarity: create, view, edit and delete users from a dashboard with reusable form components and avatar fallbacks, with every record kept in the browser so the demo needs no server.",
     "tags": [
       "Angular",
-      "Admin UI",
-      "LocalStorage"
+      "Clarity UI",
+      "Admin",
+      "Archive"
     ],
     "accent": "#06b6d4",
     "classification": "web-app",
@@ -53,7 +54,7 @@
   },
   "media": {
     "source": "repo-local",
-    "directory": "/home/runner/work/user-hub-admin/user-hub-admin/project-media",
+    "directory": "C:/Users/Gaming PC/Desktop/Repos/Demo-Using-Clarity/project-media",
     "primary": "project-media/card.jpg",
     "images": [
       {
@@ -63,7 +64,7 @@
         "bytes": 87127,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-09-14T22:27:03.085Z"
+        "capturedAt": "2026-09-14T22:49:35.073Z"
       },
       {
         "profile": "desktop",
@@ -72,7 +73,7 @@
         "bytes": 81239,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-14T22:27:04.747Z"
+        "capturedAt": "2026-09-14T22:49:35.074Z"
       },
       {
         "profile": "full",
@@ -81,7 +82,7 @@
         "bytes": 69143,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-14T22:27:08.030Z"
+        "capturedAt": "2026-09-14T22:49:35.075Z"
       },
       {
         "profile": "mobile",
@@ -90,7 +91,7 @@
         "bytes": 35234,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-09-14T22:27:06.353Z"
+        "capturedAt": "2026-09-14T22:49:35.077Z"
       },
       {
         "profile": "og",
@@ -99,7 +100,7 @@
         "bytes": 63344,
         "width": 1200,
         "height": 630,
-        "capturedAt": "2026-09-14T22:27:09.741Z"
+        "capturedAt": "2026-09-14T22:49:35.078Z"
       }
     ]
   },
@@ -128,7 +129,7 @@
   "metrics": {
     "sourceFiles": 52,
     "testFiles": 8,
-    "sourceLines": 2826,
+    "sourceLines": 2870,
     "largestDirectories": [
       {
         "directory": "src",
@@ -167,11 +168,11 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "850a74d",
-    "lastCommitDate": "2026-09-15T01:05:14+03:00",
-    "lastCommitSubject": "Refresh screenshots, card, icons and metadata after every deployment",
-    "commitCount": 22,
-    "remote": "https://github.com/BorisThoris/user-hub-admin"
+    "head": "486a3d9",
+    "lastCommitDate": "2026-09-15T01:49:35+03:00",
+    "lastCommitSubject": "Let the refresh wait up to 90 minutes for a queued Cloudflare build [meta-bot]",
+    "commitCount": 24,
+    "remote": "https://github.com/BorisThoris/user-hub-admin.git"
   },
   "readme": {
     "file": "README.md",

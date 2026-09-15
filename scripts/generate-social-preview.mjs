@@ -60,8 +60,14 @@ const title = social.title ?? curated.title ?? config.slug;
 const description = social.description ?? summarize(curated.description) ?? curated.subtitle ?? '';
 const siteName = social.siteName ?? title;
 
+// The browser-tab title and the plain description meta are part of the same
+// story as the card, so they are managed here too: social.pageTitle names the
+// tab (default: the curated title), the description meta repeats the card's.
+const pageTitle = social.pageTitle ?? title;
+
 const tags = [
   START,
+  tag('name', 'description', description),
   tag('property', 'og:type', 'website'),
   tag('property', 'og:site_name', siteName),
   tag('property', 'og:title', title),
@@ -88,25 +94,33 @@ const eol = html.includes('\r\n') ? '\r\n' : '\n';
 const indent = detectHeadIndent(html);
 const block = tags.map((line) => indent + line).join(eol);
 
+// Any loose description meta the page carries outside the block is superseded
+// by the one inside it; the tag is matched attribute by attribute so a
+// multi-line one goes too.
+const attribute = String.raw`(?:[^>"']|"[^"]*"|'[^']*')*`;
+const looseDescription = new RegExp(String.raw`[ \t]*<meta\b` + attribute + String.raw`\bname=["']description["']` + attribute + String.raw`>[ \t]*\r?\n?`, 'gi');
+const stripped = stripOutsideBlock(html, looseDescription);
+
 // A repo's formatter may re-wrap the generated tags (prettier puts one
 // attribute per line); that is the same markup, so it is not drift.
-const blockCurrent = htmlPath && html.includes(START) && html.includes(END) &&
-  normalizeMarkup(html.slice(html.indexOf(START), html.indexOf(END) + END.length)) === normalizeMarkup(block);
+const blockCurrent = htmlPath && stripped.includes(START) && stripped.includes(END) &&
+  normalizeMarkup(stripped.slice(stripped.indexOf(START), stripped.indexOf(END) + END.length)) === normalizeMarkup(block);
 
-let next = html;
+let next = stripped;
 if (!htmlPath || blockCurrent) {
   // nothing to inject: the head lives in code, or the block is already right
-} else if (html.includes(START) && html.includes(END)) {
+} else if (stripped.includes(START) && stripped.includes(END)) {
   // The existing block already sits at the right indentation; replace it in place.
-  next = html.slice(0, html.indexOf(START)) + block.trimStart() + html.slice(html.indexOf(END) + END.length);
+  next = stripped.slice(0, stripped.indexOf(START)) + block.trimStart() + stripped.slice(stripped.indexOf(END) + END.length);
 } else {
-  const headClose = html.search(/<\/head>/i);
+  const headClose = stripped.search(/<\/head>/i);
   if (headClose === -1) {
     console.error('[social] ' + config.slug + ': ' + social.htmlFile + ' has no </head> to insert into.');
     process.exit(1);
   }
-  next = html.slice(0, headClose) + block.trimStart() + eol + indent + html.slice(headClose);
+  next = stripped.slice(0, headClose) + block.trimStart() + eol + indent + stripped.slice(headClose);
 }
+if (htmlPath) next = applyPageTitle(next);
 
 const imageMissing = !fs.existsSync(sourceImage) && !fs.existsSync(targetImage);
 const imageStale = fs.existsSync(sourceImage) &&
@@ -143,7 +157,9 @@ if (!htmlPath) {
 }
 console.log('[social] ' + config.slug + ': card points at ' + imageUrl);
 
-function summarize(text, limit = 200) {
+// Cards clip long text themselves; only a runaway description is trimmed here,
+// so a two-sentence blurb reaches the reader whole.
+function summarize(text, limit = 420) {
   if (!text) return undefined;
   if (text.length <= limit) return text;
   const cut = text.slice(0, limit);
@@ -157,6 +173,31 @@ function tag(attribute, name, content) {
 
 function escapeAttribute(value) {
   return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function stripOutsideBlock(source, pattern) {
+  if (!source.includes(START) || !source.includes(END)) return source.replace(pattern, '');
+  const start = source.indexOf(START);
+  const end = source.indexOf(END) + END.length;
+  return source.slice(0, start).replace(pattern, '') + source.slice(start, end) + source.slice(end).replace(pattern, '');
+}
+
+// Sets the <title> text; a page without one gets it right before the block.
+function applyPageTitle(source) {
+  const escaped = escapeText(pageTitle);
+  const titleTag = /<title(\s[^>]*)?>([\s\S]*?)<\/title>/i;
+  const match = titleTag.exec(source);
+  if (match) {
+    if (match[2].trim() === escaped) return source;
+    return source.slice(0, match.index) + '<title' + (match[1] ?? '') + '>' + escaped + '</title>' + source.slice(match.index + match[0].length);
+  }
+  const at = source.indexOf(START);
+  if (at === -1) return source;
+  return source.slice(0, at) + '<title>' + escaped + '</title>' + eol + indent + source.slice(at);
+}
+
+function escapeText(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 function normalizeMarkup(text) {

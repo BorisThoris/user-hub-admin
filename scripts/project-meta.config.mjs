@@ -18,12 +18,13 @@ export default {
 
   curated: {
     "title": "User Hub Admin",
-    "subtitle": "Angular admin dashboard",
-    "description": "A legacy Angular admin demo using browser-local state for user management and dashboard flows.",
+    "subtitle": "A Clarity-styled admin panel for managing users",
+    "description": "An Angular admin panel built with VMware Clarity: create, view, edit and delete users from a dashboard with reusable form components and avatar fallbacks, with every record kept in the browser so the demo needs no server.",
     "tags": [
       "Angular",
-      "Admin UI",
-      "LocalStorage"
+      "Clarity UI",
+      "Admin",
+      "Archive"
     ],
     "accent": "#06b6d4",
     "deploymentUrl": "https://user-hub-admin-git.pages.dev/",
@@ -56,6 +57,7 @@ export default {
   // Graph tags, and the static directory the image is published from.
   social: {
     "htmlFile": "src/index.html",
+    "pageTitle": "User Hub Admin",
     "staticDir": "src/assets",
     "imageName": "og-image.jpg",
     "imageUrlPath": "/assets/og-image.jpg"
