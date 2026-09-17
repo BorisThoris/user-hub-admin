@@ -40,7 +40,12 @@ jobs:
         with:
           node-version: 22
 
+      # If Cloudflare never deploys (a failed build, a blocked account, no check at
+      # all) this does not fail the run: the screenshots are kept and the card,
+      # icons and metadata still refresh. Screenshots are then retaken from the PC
+      # against the tailnet-hosted build (hosted-failover) instead.
       - name: Wait for the Cloudflare Pages deployment of this commit
+        id: deploy
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -51,14 +56,24 @@ jobs:
               -q '[.check_runs[] | select(.name | startswith("Cloudflare Pages"))] | first | "\(.status) \(.conclusion)"' 2>/dev/null || true)
             echo "  $i: ${state:-no check yet}"
             case "$state" in
-              "completed success") echo "deployed"; sleep 45; exit 0 ;;
-              "completed failure"|"completed cancelled"|"completed timed_out") echo "Cloudflare build failed"; exit 1 ;;
+              "completed success") echo "deployed"; sleep 45; echo "deployed=true" >> "$GITHUB_OUTPUT"; exit 0 ;;
+              "completed failure"|"completed cancelled"|"completed timed_out")
+                echo "::warning::Cloudflare build failed; refreshing without new screenshots"
+                echo "deployed=false" >> "$GITHUB_OUTPUT"; exit 0 ;;
             esac
+            # No check-run after 10 minutes means Cloudflare is not building this repo
+            # at all (blocked account, disconnected project): do not wait two hours.
+            if [ "$i" -ge 20 ] && [ -z "$state" ]; then
+              echo "::warning::no Cloudflare Pages check appeared; refreshing without new screenshots"
+              echo "deployed=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
             sleep 30
           done
-          echo "gave up waiting for the deployment"; exit 1
+          echo "::warning::gave up waiting for the deployment; refreshing without new screenshots"
+          echo "deployed=false" >> "$GITHUB_OUTPUT"
 
       - name: Install a browser for the screenshots
+        if: steps.deploy.outputs.deployed == 'true'
         run: |
           mkdir -p /tmp/pw && cd /tmp/pw
           npm init -y >/dev/null
@@ -68,7 +83,12 @@ jobs:
       - name: Refresh screenshots, card, icons and metadata
         env:
           PORTFOLIO_ROOT: /tmp/pw
-        run: node scripts/refresh-project-meta.mjs
+        run: |
+          if [ "${{ steps.deploy.outputs.deployed }}" = "true" ]; then
+            node scripts/refresh-project-meta.mjs
+          else
+            node scripts/refresh-project-meta.mjs --no-shots
+          fi
 
       - name: Commit what changed
         run: |
