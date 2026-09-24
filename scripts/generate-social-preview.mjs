@@ -204,7 +204,8 @@ function normalizeMarkup(text) {
   return text.replace(/\s+/g, ' ').replace(/\s*\/>/g, ' />').trim();
 }
 
+// A head whose tags start at column 0 gets an unindented block.
 function detectHeadIndent(html) {
-  const match = /\n([ \t]+)<meta/i.exec(html);
+  const match = /\n([ \t]*)<(?:meta|link|title)/i.exec(html);
   return match ? match[1] : '    ';
 }

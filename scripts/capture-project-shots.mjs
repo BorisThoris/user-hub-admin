@@ -46,6 +46,13 @@ if (unknown.length > 0) {
 }
 
 const capture = config.capture ?? {};
+// A project whose pictures are rendered rather than photographed (a poster set
+// from its own scene, see build-project-trailers.mjs) opts out here.
+if (capture.skip) {
+  console.log('[shots] ' + config.slug + ': screenshots are not taken for this project' +
+    (typeof capture.skip === 'string' ? ' - ' + capture.skip : '') + '.');
+  process.exit(0);
+}
 const route = capture.route ?? '/';
 const explicitUrl = valueOf('--url');
 const source = valueOf('--source') ?? (explicitUrl ? 'explicit' : (config.curated?.deploymentUrl ? 'deployment' : 'local'));

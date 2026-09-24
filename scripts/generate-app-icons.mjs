@@ -148,6 +148,8 @@ const files = {
 const manifestName = icons.manifestName ?? 'site.webmanifest';
 const recordPath = path.join(repoRoot, 'project-media', 'icons.json');
 
+// icons.manifest in the config adds to or overrides these fields (a game wants
+// display: 'fullscreen', categories, screenshots).
 const manifest = {
   name,
   short_name: shortName,
@@ -161,7 +163,8 @@ const manifest = {
     { src: urlPrefix + 'icon-192.png', sizes: '192x192', type: 'image/png' },
     { src: urlPrefix + 'icon-512.png', sizes: '512x512', type: 'image/png' },
     { src: urlPrefix + 'icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
-  ]
+  ],
+  ...(icons.manifest ?? {})
 };
 const manifestJson = JSON.stringify(manifest, null, 2) + '\n';
 
@@ -346,8 +349,9 @@ function stripBlock(source) {
   return source.slice(0, source.indexOf(START)) + source.slice(source.indexOf(END) + END.length);
 }
 
+// A head whose tags start at column 0 gets an unindented block.
 function detectHeadIndent(source) {
-  const match = /\n([ \t]+)<(?:meta|link|title)/i.exec(source);
+  const match = /\n([ \t]*)<(?:meta|link|title)/i.exec(source);
   return match ? match[1] : '    ';
 }
 

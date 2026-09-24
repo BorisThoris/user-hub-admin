@@ -107,7 +107,12 @@ const meta = pruneEmpty({
     source: media.source,
     directory: media.directory,
     primary: media.primary,
-    images: media.images
+    images: media.images,
+    // Trailers rendered by scripts/build-project-trailers.mjs, addressed by
+    // their URL on the deployment, and any hand-listed videos (YouTube, a
+    // gameplay capture) from the config.
+    trailers: collectTrailers(),
+    videos: collectVideos()
   }),
 
   stack: pruneEmpty({
@@ -457,6 +462,59 @@ function describeImages(directory, prefix) {
     });
 }
 
+// project-media/trailers.json is the record build-project-trailers.mjs keeps of
+// what it published; the deployment origin turns its site paths into URLs the
+// portfolio can play from anywhere.
+function collectTrailers() {
+  const record = readJson(path.join(repoRoot, 'project-media', 'trailers.json'));
+  if (!record || !Array.isArray(record.items)) return [];
+  const origin = deploymentOrigin();
+  return record.items
+    .filter((item) => (item.kind ?? 'trailer') === 'trailer' && item.urlPath)
+    .map((item) => pruneEmpty({
+      id: item.id,
+      title: item.title,
+      url: origin ? origin + item.urlPath : item.urlPath,
+      poster: item.posterUrlPath ? (origin ? origin + item.posterUrlPath : item.posterUrlPath) : undefined,
+      file: item.file,
+      bytes: item.bytes,
+      width: item.width,
+      height: item.height,
+      duration: item.duration,
+      orientation: item.orientation,
+      builtAt: item.builtAt
+    }));
+}
+
+function collectVideos() {
+  const videos = Array.isArray(config.videos) ? config.videos : [];
+  return videos
+    .filter((video) => video && video.url)
+    .map((video) => pruneEmpty({
+      title: video.title,
+      url: video.url,
+      kind: video.kind ?? videoKind(video.url),
+      poster: video.poster,
+      description: video.description
+    }));
+}
+
+function videoKind(url) {
+  if (/youtube\.com|youtu\.be/i.test(url)) return 'youtube';
+  if (/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url)) return 'video';
+  return 'link';
+}
+
+function deploymentOrigin() {
+  const url = config.curated?.deploymentUrl;
+  if (!url) return '';
+  try {
+    return new URL(url).origin;
+  } catch {
+    return '';
+  }
+}
+
 function copyMediaIntoRepo() {
   const found = mediaSourceDir();
   if (!found.directory || found.source === 'repo-local' || !fs.existsSync(found.directory)) return;
@@ -546,6 +604,13 @@ function stripVolatile(value) {
     clone.media.images = clone.media.images.map((image) => {
       const copy = { ...image };
       delete copy.capturedAt;
+      return copy;
+    });
+  }
+  if (clone.media?.trailers) {
+    clone.media.trailers = clone.media.trailers.map((trailer) => {
+      const copy = { ...trailer };
+      delete copy.builtAt;
       return copy;
     });
   }

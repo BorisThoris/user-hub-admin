@@ -96,6 +96,40 @@
               "capturedAt": { "type": "string", "format": "date-time" }
             }
           }
+        },
+        "trailers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "url"],
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "url": { "type": "string" },
+              "poster": { "type": "string" },
+              "file": { "type": "string" },
+              "bytes": { "type": "integer" },
+              "width": { "type": "integer" },
+              "height": { "type": "integer" },
+              "duration": { "type": "number" },
+              "orientation": { "type": "string", "enum": ["landscape", "portrait", "square"] },
+              "builtAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["url"],
+            "properties": {
+              "title": { "type": "string" },
+              "url": { "type": "string" },
+              "kind": { "type": "string", "enum": ["youtube", "video", "link"] },
+              "poster": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
         }
       }
     },

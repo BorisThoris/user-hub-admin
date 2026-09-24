@@ -80,14 +80,16 @@ jobs:
           npm install --no-audit --no-fund playwright@1
           npx playwright install --with-deps chromium
 
+      # Trailers and rendered posters need the GPU toolchain (Blender, Chrome,
+      # NVENC), which only the PC's CI chain has; they are left alone here.
       - name: Refresh screenshots, card, icons and metadata
         env:
           PORTFOLIO_ROOT: /tmp/pw
         run: |
           if [ "${{ steps.deploy.outputs.deployed }}" = "true" ]; then
-            node scripts/refresh-project-meta.mjs
+            node scripts/refresh-project-meta.mjs --no-trailers
           else
-            node scripts/refresh-project-meta.mjs --no-shots
+            node scripts/refresh-project-meta.mjs --no-trailers --no-shots
           fi
 
       - name: Commit what changed
