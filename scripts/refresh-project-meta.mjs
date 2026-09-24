@@ -140,8 +140,15 @@ function commitOwnedFiles() {
   }
   const upToDate = spawnSync('git', ['merge-base', '--is-ancestor', 'origin/' + branch, 'HEAD'], { cwd: repoRoot });
   if (upToDate.status !== 0) {
-    console.warn('[refresh] this checkout is behind origin/' + branch + ' - commit kept locally; pull, then push.');
-    return;
+    // Someone pushed while the render ran: replay this one commit on top. A
+    // conflict (they touched the same rendered files) is left for the next run.
+    const rebased = spawnSync('git', ['rebase', '-q', '--autostash', 'origin/' + branch], { cwd: repoRoot, stdio: 'inherit' });
+    if (rebased.status !== 0) {
+      spawnSync('git', ['rebase', '--abort'], { cwd: repoRoot, stdio: 'ignore' });
+      console.warn('[refresh] this checkout is behind origin/' + branch + ' and the commit does not replay cleanly - kept locally; pull, then push.');
+      return;
+    }
+    console.log('[refresh] replayed the commit on top of origin/' + branch + '.');
   }
   const pushed = spawnSync('git', ['push', '-q', 'origin', 'HEAD:' + branch], { cwd: repoRoot, stdio: 'inherit' });
   if (pushed.status !== 0) {

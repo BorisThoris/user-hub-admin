@@ -75,6 +75,7 @@ const maxBytes = trailers.maxBytes ?? 20 * 1024 * 1024;
 
 const stale = [];
 const missingTools = [];
+const preparedThisRun = new Set();
 let built = 0;
 let recordChanged = false;
 
@@ -107,8 +108,16 @@ for (const item of items) {
 
   let prepareHash = previous?.prepareHash;
   if (item.prepare && (force || state.prepareStale)) {
-    console.log('\n[trailers] ' + item.id + ': prepare - ' + item.prepare.command);
-    run(item.prepare.command, tools.env);
+    // Items sharing a generator (both VYB edits recapture the same screens)
+    // run it once per invocation; a second capture could differ by a pixel
+    // and make the first item look stale again.
+    if (preparedThisRun.has(item.prepare.command)) {
+      console.log('[trailers] ' + item.id + ': prepare already ran this time.');
+    } else {
+      console.log('\n[trailers] ' + item.id + ': prepare - ' + item.prepare.command);
+      run(item.prepare.command, tools.env);
+      preparedThisRun.add(item.prepare.command);
+    }
     prepareHash = hashPathspecs(item.prepare.inputs ?? []);
   }
 
@@ -124,7 +133,12 @@ for (const item of items) {
   }
 
   console.log('\n[trailers] ' + item.id + ': build - ' + item.build);
-  run(item.build, tools.env);
+  // A render that shares the GPU with another job can lose its encoder pipe
+  // once; a second attempt is cheap next to a stale trailer.
+  if (!attempt(item.build, tools.env)) {
+    console.warn('[trailers] ' + item.id + ': build failed once, retrying.');
+    run(item.build, tools.env);
+  }
 
   const entry = { id: item.id, title: item.title ?? item.id, kind: item.kind ?? 'trailer', inputsHash, builtAt: new Date().toISOString() };
   if (item.prepare) entry.prepareHash = prepareHash ?? hashPathspecs(item.prepare.inputs ?? []);
@@ -237,6 +251,11 @@ function onPath(name) {
   // Some tools answer --version on stderr or with a non-zero status; a spawn
   // that produced any output means the executable exists.
   return probe.status === 0 || Boolean((probe.stdout || '').trim() || (probe.stderr || '').trim());
+}
+
+function attempt(command, env) {
+  const result = spawnSync(command, { cwd: repoRoot, stdio: 'inherit', shell: true, env });
+  return result.status === 0;
 }
 
 function run(command, env) {
