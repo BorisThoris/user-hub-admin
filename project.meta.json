@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T10:25:53.810Z",
+  "generatedAt": "2026-09-24T12:58:30.117Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -46,7 +46,9 @@
       "social:check",
       "icons",
       "icons:check",
-      "meta:refresh"
+      "meta:refresh",
+      "trailers",
+      "trailers:check"
     ]
   },
   "capture": {
@@ -54,53 +56,53 @@
   },
   "media": {
     "source": "repo-local",
-    "directory": "C:/Users/Gaming PC/Desktop/Repos/Demo-Using-Clarity/project-media",
+    "directory": "/home/runner/work/user-hub-admin/user-hub-admin/project-media",
     "primary": "project-media/card.jpg",
     "images": [
       {
         "profile": "card",
         "file": "card.jpg",
         "path": "project-media/card.jpg",
-        "bytes": 87916,
+        "bytes": 87361,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-09-17T10:25:46.639Z"
+        "capturedAt": "2026-09-24T12:58:23.174Z"
       },
       {
         "profile": "desktop",
         "file": "desktop.jpg",
         "path": "project-media/desktop.jpg",
-        "bytes": 82655,
+        "bytes": 81557,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-17T10:25:48.178Z"
+        "capturedAt": "2026-09-24T12:58:24.900Z"
       },
       {
         "profile": "full",
         "file": "full.jpg",
         "path": "project-media/full.jpg",
-        "bytes": 70816,
+        "bytes": 69886,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-17T10:25:51.161Z"
+        "capturedAt": "2026-09-24T12:58:28.268Z"
       },
       {
         "profile": "mobile",
         "file": "mobile.jpg",
         "path": "project-media/mobile.jpg",
-        "bytes": 36100,
+        "bytes": 35445,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-09-17T10:25:49.664Z"
+        "capturedAt": "2026-09-24T12:58:26.553Z"
       },
       {
         "profile": "og",
         "file": "og.jpg",
         "path": "project-media/og.jpg",
-        "bytes": 64022,
+        "bytes": 62834,
         "width": 1200,
         "height": 630,
-        "capturedAt": "2026-09-17T10:25:52.653Z"
+        "capturedAt": "2026-09-24T12:58:29.943Z"
       }
     ]
   },
@@ -127,9 +129,9 @@
     "devDependencyCount": 18
   },
   "metrics": {
-    "sourceFiles": 52,
+    "sourceFiles": 53,
     "testFiles": 8,
-    "sourceLines": 2870,
+    "sourceLines": 3425,
     "largestDirectories": [
       {
         "directory": "src",
@@ -141,7 +143,7 @@
       },
       {
         "directory": "scripts",
-        "files": 6
+        "files": 7
       },
       {
         "directory": "e2e",
@@ -168,11 +170,11 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "63fc342",
-    "lastCommitDate": "2026-09-15T12:29:52+00:00",
-    "lastCommitSubject": "Refresh screenshots, card, icons and metadata [meta-bot]",
-    "commitCount": 26,
-    "remote": "https://github.com/BorisThoris/user-hub-admin.git"
+    "head": "5ddc1a9",
+    "lastCommitDate": "2026-09-24T15:45:16+03:00",
+    "lastCommitSubject": "Update the metadata toolkit scripts: trailers step, refresh --commit, capture.skip",
+    "commitCount": 28,
+    "remote": "https://github.com/BorisThoris/user-hub-admin"
   },
   "readme": {
     "file": "README.md",
