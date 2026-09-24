@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T14:44:12.506Z",
+  "generatedAt": "2026-09-24T16:30:27.763Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -63,46 +63,46 @@
         "profile": "card",
         "file": "card.jpg",
         "path": "project-media/card.jpg",
-        "bytes": 87286,
+        "bytes": 87469,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-09-24T14:44:05.377Z"
+        "capturedAt": "2026-09-24T16:30:20.019Z"
       },
       {
         "profile": "desktop",
         "file": "desktop.jpg",
         "path": "project-media/desktop.jpg",
-        "bytes": 80940,
+        "bytes": 80938,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-24T14:44:07.005Z"
+        "capturedAt": "2026-09-24T16:30:21.964Z"
       },
       {
         "profile": "full",
         "file": "full.jpg",
         "path": "project-media/full.jpg",
-        "bytes": 69642,
+        "bytes": 69724,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-24T14:44:10.262Z"
+        "capturedAt": "2026-09-24T16:30:25.728Z"
       },
       {
         "profile": "mobile",
         "file": "mobile.jpg",
         "path": "project-media/mobile.jpg",
-        "bytes": 35334,
+        "bytes": 35193,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-09-24T14:44:08.593Z"
+        "capturedAt": "2026-09-24T16:30:23.912Z"
       },
       {
         "profile": "og",
         "file": "og.jpg",
         "path": "project-media/og.jpg",
-        "bytes": 63346,
+        "bytes": 62919,
         "width": 1200,
         "height": 630,
-        "capturedAt": "2026-09-24T14:44:12.047Z"
+        "capturedAt": "2026-09-24T16:30:27.585Z"
       }
     ]
   },
@@ -131,7 +131,7 @@
   "metrics": {
     "sourceFiles": 53,
     "testFiles": 8,
-    "sourceLines": 3451,
+    "sourceLines": 3474,
     "largestDirectories": [
       {
         "directory": "src",
@@ -170,10 +170,10 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "2be3872",
-    "lastCommitDate": "2026-09-24T16:46:54+03:00",
+    "head": "bfdd9a7",
+    "lastCommitDate": "2026-09-24T19:16:36+03:00",
     "lastCommitSubject": "Update the metadata toolkit scripts: trailers step, refresh --commit, capture.skip",
-    "commitCount": 31,
+    "commitCount": 33,
     "remote": "https://github.com/BorisThoris/user-hub-admin"
   },
   "readme": {
