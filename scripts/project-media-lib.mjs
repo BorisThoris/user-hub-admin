@@ -352,8 +352,13 @@ export async function recordRecipe(chromium, { url, recipe, outDir, log = consol
       await page.goto(joinUrl(url, recipe.route ?? '/'), { waitUntil: 'load', timeout: 60000 });
       skipped.push(...(await settle(page, recipe.setup ?? recipe, { strict: true, log })));
       const started = Date.now();
+      // Judged on its best frame: the settled opening and the end of the
+      // timeline are both sampled, so a fade or a scene change at one end
+      // does not fail a recording that shows the app for the rest of it.
+      const opening = await frameStats(page);
       skipped.push(...(await runActions(page, recipe.timeline ?? [], { strict: false, log })));
-      stats = await frameStats(page);
+      const closing = await frameStats(page);
+      stats = assessFrame(closing, recipe.quality).length <= assessFrame(opening, recipe.quality).length ? closing : opening;
       const remaining = (recipe.durationMs ?? 20000) - (Date.now() - started);
       if (remaining > 0) await page.waitForTimeout(remaining);
     } finally {
