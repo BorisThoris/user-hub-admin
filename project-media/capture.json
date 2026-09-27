@@ -1,6 +1,6 @@
 {
   "slug": "user-hub-admin",
-  "capturedAt": "2026-09-27T13:31:51.284Z",
+  "capturedAt": "2026-09-27T14:45:35.687Z",
   "source": "deployment",
   "url": "https://user-hub-admin-git.pages.dev/",
   "recipe": {
@@ -27,7 +27,7 @@
       "file": "card.jpg",
       "width": 1600,
       "height": 900,
-      "bytes": 74231,
+      "bytes": 73914,
       "status": "captured",
       "stats": {
         "mean": 231,
@@ -42,13 +42,13 @@
       "file": "desktop.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 68011,
+      "bytes": 68265,
       "status": "captured",
       "stats": {
         "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.266,
+        "light": 0.265,
         "colours": 14
       }
     },
@@ -57,13 +57,13 @@
       "file": "mobile.jpg",
       "width": 430,
       "height": 932,
-      "bytes": 25949,
+      "bytes": 25828,
       "status": "captured",
       "stats": {
-        "mean": 231,
+        "mean": 232,
         "std": 37,
         "dark": 0,
-        "light": 0.22,
+        "light": 0.221,
         "colours": 32
       }
     },
@@ -72,13 +72,13 @@
       "file": "full.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 58071,
+      "bytes": 58110,
       "status": "captured",
       "stats": {
         "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.264,
+        "light": 0.263,
         "colours": 14
       }
     },
@@ -87,13 +87,13 @@
       "file": "og.jpg",
       "width": 1200,
       "height": 630,
-      "bytes": 49647,
+      "bytes": 49418,
       "status": "captured",
       "stats": {
         "mean": 227,
         "std": 41,
         "dark": 0,
-        "light": 0.272,
+        "light": 0.269,
         "colours": 11
       }
     }
