@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-27T13:28:05.206Z",
+  "generatedAt": "2026-09-27T13:31:51.420Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -73,53 +73,53 @@
   },
   "media": {
     "source": "repo-local",
-    "directory": "C:/Users/GAMING~1/AppData/Local/Temp/media-rollout-qLOWC7/project-media",
+    "directory": "/home/runner/work/user-hub-admin/user-hub-admin/project-media",
     "primary": "project-media/card.jpg",
     "images": [
       {
         "profile": "card",
         "file": "card.jpg",
         "path": "project-media/card.jpg",
-        "bytes": 74064,
+        "bytes": 74231,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-09-27T13:27:26.211Z"
+        "capturedAt": "2026-09-27T13:31:39.247Z"
       },
       {
         "profile": "desktop",
         "file": "desktop.jpg",
         "path": "project-media/desktop.jpg",
-        "bytes": 66757,
+        "bytes": 68011,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-27T13:27:36.017Z"
+        "capturedAt": "2026-09-27T13:31:42.225Z"
       },
       {
         "profile": "full",
         "file": "full.jpg",
         "path": "project-media/full.jpg",
-        "bytes": 56901,
+        "bytes": 58071,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-27T13:27:47.897Z"
+        "capturedAt": "2026-09-27T13:31:48.328Z"
       },
       {
         "profile": "mobile",
         "file": "mobile.jpg",
         "path": "project-media/mobile.jpg",
-        "bytes": 26740,
+        "bytes": 25949,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-09-27T13:27:42.930Z"
+        "capturedAt": "2026-09-27T13:31:45.278Z"
       },
       {
         "profile": "og",
         "file": "og.jpg",
         "path": "project-media/og.jpg",
-        "bytes": 49554,
+        "bytes": 49647,
         "width": 1200,
         "height": 630,
-        "capturedAt": "2026-09-27T13:27:55.912Z"
+        "capturedAt": "2026-09-27T13:31:51.252Z"
       }
     ],
     "trailers": [
@@ -201,12 +201,12 @@
   },
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
-    "branch": "HEAD",
-    "head": "65c560e",
-    "lastCommitDate": "2026-09-24T16:30:27+00:00",
-    "lastCommitSubject": "Refresh screenshots, card, icons and metadata [meta-bot]",
-    "commitCount": 34,
-    "remote": "https://github.com/BorisThoris/user-hub-admin.git"
+    "branch": "master",
+    "head": "538e677",
+    "lastCommitDate": "2026-09-27T16:28:14+03:00",
+    "lastCommitSubject": "A media strategy with tests: screenshots that show the app, a recorded trailer, a gated refresh",
+    "commitCount": 35,
+    "remote": "https://github.com/BorisThoris/user-hub-admin"
   },
   "readme": {
     "file": "README.md",

@@ -1,6 +1,6 @@
 {
   "slug": "user-hub-admin",
-  "capturedAt": "2026-09-27T13:28:00.418Z",
+  "capturedAt": "2026-09-27T13:31:51.284Z",
   "source": "deployment",
   "url": "https://user-hub-admin-git.pages.dev/",
   "recipe": {
@@ -27,13 +27,13 @@
       "file": "card.jpg",
       "width": 1600,
       "height": 900,
-      "bytes": 74064,
+      "bytes": 74231,
       "status": "captured",
       "stats": {
         "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.257,
+        "light": 0.256,
         "colours": 11
       }
     },
@@ -42,14 +42,14 @@
       "file": "desktop.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 66757,
+      "bytes": 68011,
       "status": "captured",
       "stats": {
-        "mean": 230,
+        "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.252,
-        "colours": 12
+        "light": 0.266,
+        "colours": 14
       }
     },
     {
@@ -57,13 +57,13 @@
       "file": "mobile.jpg",
       "width": 430,
       "height": 932,
-      "bytes": 26740,
+      "bytes": 25949,
       "status": "captured",
       "stats": {
-        "mean": 232,
-        "std": 36,
+        "mean": 231,
+        "std": 37,
         "dark": 0,
-        "light": 0.218,
+        "light": 0.22,
         "colours": 32
       }
     },
@@ -72,14 +72,14 @@
       "file": "full.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 56901,
+      "bytes": 58071,
       "status": "captured",
       "stats": {
-        "mean": 230,
+        "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.249,
-        "colours": 12
+        "light": 0.264,
+        "colours": 14
       }
     },
     {
@@ -87,14 +87,14 @@
       "file": "og.jpg",
       "width": 1200,
       "height": 630,
-      "bytes": 49554,
+      "bytes": 49647,
       "status": "captured",
       "stats": {
         "mean": 227,
         "std": 41,
         "dark": 0,
-        "light": 0.27,
-        "colours": 12
+        "light": 0.272,
+        "colours": 11
       }
     }
   ]
