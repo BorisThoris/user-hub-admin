@@ -44,3 +44,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+# recorded trailer masters (scripts/build-project-trailers.mjs)
+project-media/.captures/

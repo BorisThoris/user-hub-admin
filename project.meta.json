@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T16:30:27.763Z",
+  "generatedAt": "2026-09-27T13:28:05.206Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -48,61 +48,93 @@
       "icons:check",
       "meta:refresh",
       "trailers",
-      "trailers:check"
+      "trailers:check",
+      "test:media",
+      "test:media:e2e"
     ]
   },
   "capture": {
-    "route": "/"
+    "route": "/",
+    "actions": [
+      {
+        "type": "click",
+        "target": {
+          "role": "button",
+          "name": "Manage users"
+        },
+        "label": "open the user manager"
+      },
+      {
+        "type": "wait",
+        "ms": 1500
+      }
+    ],
+    "waitAfterReadyMs": 800
   },
   "media": {
     "source": "repo-local",
-    "directory": "/home/runner/work/user-hub-admin/user-hub-admin/project-media",
+    "directory": "C:/Users/GAMING~1/AppData/Local/Temp/media-rollout-qLOWC7/project-media",
     "primary": "project-media/card.jpg",
     "images": [
       {
         "profile": "card",
         "file": "card.jpg",
         "path": "project-media/card.jpg",
-        "bytes": 87469,
+        "bytes": 74064,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-09-24T16:30:20.019Z"
+        "capturedAt": "2026-09-27T13:27:26.211Z"
       },
       {
         "profile": "desktop",
         "file": "desktop.jpg",
         "path": "project-media/desktop.jpg",
-        "bytes": 80938,
+        "bytes": 66757,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-24T16:30:21.964Z"
+        "capturedAt": "2026-09-27T13:27:36.017Z"
       },
       {
         "profile": "full",
         "file": "full.jpg",
         "path": "project-media/full.jpg",
-        "bytes": 69724,
+        "bytes": 56901,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-09-24T16:30:25.728Z"
+        "capturedAt": "2026-09-27T13:27:47.897Z"
       },
       {
         "profile": "mobile",
         "file": "mobile.jpg",
         "path": "project-media/mobile.jpg",
-        "bytes": 35193,
+        "bytes": 26740,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-09-24T16:30:23.912Z"
+        "capturedAt": "2026-09-27T13:27:42.930Z"
       },
       {
         "profile": "og",
         "file": "og.jpg",
         "path": "project-media/og.jpg",
-        "bytes": 62919,
+        "bytes": 49554,
         "width": 1200,
         "height": 630,
-        "capturedAt": "2026-09-24T16:30:27.585Z"
+        "capturedAt": "2026-09-27T13:27:55.912Z"
+      }
+    ],
+    "trailers": [
+      {
+        "id": "tour",
+        "title": "User Hub Admin: create, review, manage",
+        "url": "https://user-hub-admin-git.pages.dev/trailers/tour.mp4",
+        "poster": "https://user-hub-admin-git.pages.dev/trailers/tour.jpg",
+        "file": "src/assets/trailers/tour.mp4",
+        "bytes": 1357160,
+        "width": 1280,
+        "height": 720,
+        "duration": 20,
+        "orientation": "landscape",
+        "builtAt": "2026-09-27T13:26:44.764Z"
       }
     ]
   },
@@ -129,9 +161,9 @@
     "devDependencyCount": 18
   },
   "metrics": {
-    "sourceFiles": 53,
-    "testFiles": 8,
-    "sourceLines": 3474,
+    "sourceFiles": 56,
+    "testFiles": 10,
+    "sourceLines": 4326,
     "largestDirectories": [
       {
         "directory": "src",
@@ -143,7 +175,7 @@
       },
       {
         "directory": "scripts",
-        "files": 7
+        "files": 10
       },
       {
         "directory": "e2e",
@@ -169,12 +201,12 @@
   },
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
-    "branch": "master",
-    "head": "bfdd9a7",
-    "lastCommitDate": "2026-09-24T19:16:36+03:00",
-    "lastCommitSubject": "Update the metadata toolkit scripts: trailers step, refresh --commit, capture.skip",
-    "commitCount": 33,
-    "remote": "https://github.com/BorisThoris/user-hub-admin"
+    "branch": "HEAD",
+    "head": "65c560e",
+    "lastCommitDate": "2026-09-24T16:30:27+00:00",
+    "lastCommitSubject": "Refresh screenshots, card, icons and metadata [meta-bot]",
+    "commitCount": 34,
+    "remote": "https://github.com/BorisThoris/user-hub-admin.git"
   },
   "readme": {
     "file": "README.md",

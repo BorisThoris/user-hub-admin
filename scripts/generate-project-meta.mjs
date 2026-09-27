@@ -112,6 +112,8 @@ const meta = pruneEmpty({
     // their URL on the deployment, and any hand-listed videos (YouTube, a
     // gameplay capture) from the config.
     trailers: collectTrailers(),
+    // Wallpapers, posters and key art the same script published (kind: 'artwork').
+    artwork: collectArtwork(),
     videos: collectVideos()
   }),
 
@@ -470,7 +472,7 @@ function collectTrailers() {
   if (!record || !Array.isArray(record.items)) return [];
   const origin = deploymentOrigin();
   return record.items
-    .filter((item) => (item.kind ?? 'trailer') === 'trailer' && item.urlPath)
+    .filter((item) => ['trailer', 'capture'].includes(item.kind ?? 'trailer') && item.urlPath)
     .map((item) => pruneEmpty({
       id: item.id,
       title: item.title,
@@ -481,6 +483,26 @@ function collectTrailers() {
       width: item.width,
       height: item.height,
       duration: item.duration,
+      orientation: item.orientation,
+      builtAt: item.builtAt
+    }));
+}
+
+function collectArtwork() {
+  const record = readJson(path.join(repoRoot, 'project-media', 'trailers.json'));
+  if (!record || !Array.isArray(record.items)) return [];
+  const origin = deploymentOrigin();
+  return record.items
+    .filter((item) => item.kind === 'artwork' && item.urlPath)
+    .map((item) => pruneEmpty({
+      id: item.id,
+      title: item.title,
+      role: item.role,
+      url: origin ? origin + item.urlPath : item.urlPath,
+      file: item.file,
+      bytes: item.bytes,
+      width: item.width,
+      height: item.height,
       orientation: item.orientation,
       builtAt: item.builtAt
     }));

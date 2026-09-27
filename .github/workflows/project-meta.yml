@@ -19,3 +19,6 @@ jobs:
           node-version: 22
       # The check needs no dependencies: it compares files and head tags only.
       - run: node scripts/refresh-project-meta.mjs --check --no-shots --warn-meta
+      # The media contract: screenshots that show the app, trailers recorded
+      # and within their limits, metadata that lists them.
+      - run: node --test scripts/project-media.test.mjs

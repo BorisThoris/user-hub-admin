@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "tour",
+      "title": "User Hub Admin: create, review, manage",
+      "kind": "capture",
+      "inputsHash": "09aa72e1d535ae20a653969ed04bdb1dd91b7ed563da2fbe02b2b5a88e4dbc2d",
+      "builtAt": "2026-09-27T13:26:44.764Z",
+      "source": "project-media/.captures/tour.webm",
+      "file": "src/assets/trailers/tour.mp4",
+      "poster": "src/assets/trailers/tour.jpg",
+      "urlPath": "/trailers/tour.mp4",
+      "posterUrlPath": "/trailers/tour.jpg",
+      "bytes": 1357160,
+      "width": 1280,
+      "height": 720,
+      "duration": 20,
+      "fps": 30,
+      "orientation": "landscape",
+      "music": "project-media/music/tour.m4a",
+      "stats": {
+        "mean": 227,
+        "std": 39,
+        "dark": 0,
+        "light": 0.194,
+        "colours": 19
+      }
+    }
+  ]
+}

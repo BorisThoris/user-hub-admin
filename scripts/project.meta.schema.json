@@ -29,7 +29,7 @@
           "enum": ["web-app", "web-library", "web-site", "duplicate", "archived", "template", "tooling", "hosted-only"]
         },
         "showcaseTier": { "type": "string", "enum": ["showcase", "more", "excluded"] },
-        "showcaseOrder": { "type": "integer", "minimum": 1 },
+        "showcaseOrder": { "type": "integer", "minimum": 0 },
         "duplicateOf": { "type": "string" },
         "excludedReason": { "type": "string" }
       }
@@ -112,6 +112,26 @@
               "width": { "type": "integer" },
               "height": { "type": "integer" },
               "duration": { "type": "number" },
+              "orientation": { "type": "string", "enum": ["landscape", "portrait", "square"] },
+              "builtAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "artwork": {
+          "description": "Wallpapers, posters and key art published by scripts/build-project-trailers.mjs (kind: artwork), addressed by their URL on the deployment.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "url"],
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "role": { "type": "string", "enum": ["wallpaper", "poster", "key-art", "capsule", "social", "artwork"] },
+              "url": { "type": "string" },
+              "file": { "type": "string" },
+              "bytes": { "type": "integer" },
+              "width": { "type": "integer" },
+              "height": { "type": "integer" },
               "orientation": { "type": "string", "enum": ["landscape", "portrait", "square"] },
               "builtAt": { "type": "string", "format": "date-time" }
             }

@@ -1,10 +1,25 @@
 {
   "slug": "user-hub-admin",
-  "capturedAt": "2026-09-24T16:30:27.622Z",
+  "capturedAt": "2026-09-27T13:28:00.418Z",
   "source": "deployment",
   "url": "https://user-hub-admin-git.pages.dev/",
   "recipe": {
-    "route": "/"
+    "route": "/",
+    "actions": [
+      {
+        "type": "click",
+        "target": {
+          "role": "button",
+          "name": "Manage users"
+        },
+        "label": "open the user manager"
+      },
+      {
+        "type": "wait",
+        "ms": 1500
+      }
+    ],
+    "waitAfterReadyMs": 800
   },
   "profiles": [
     {
@@ -12,40 +27,75 @@
       "file": "card.jpg",
       "width": 1600,
       "height": 900,
-      "bytes": 87469,
-      "status": "captured"
+      "bytes": 74064,
+      "status": "captured",
+      "stats": {
+        "mean": 231,
+        "std": 36,
+        "dark": 0,
+        "light": 0.257,
+        "colours": 11
+      }
     },
     {
       "profile": "desktop",
       "file": "desktop.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 80938,
-      "status": "captured"
+      "bytes": 66757,
+      "status": "captured",
+      "stats": {
+        "mean": 230,
+        "std": 36,
+        "dark": 0,
+        "light": 0.252,
+        "colours": 12
+      }
     },
     {
       "profile": "mobile",
       "file": "mobile.jpg",
       "width": 430,
       "height": 932,
-      "bytes": 35193,
-      "status": "captured"
+      "bytes": 26740,
+      "status": "captured",
+      "stats": {
+        "mean": 232,
+        "std": 36,
+        "dark": 0,
+        "light": 0.218,
+        "colours": 32
+      }
     },
     {
       "profile": "full",
       "file": "full.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 69724,
-      "status": "captured"
+      "bytes": 56901,
+      "status": "captured",
+      "stats": {
+        "mean": 230,
+        "std": 36,
+        "dark": 0,
+        "light": 0.249,
+        "colours": 12
+      }
     },
     {
       "profile": "og",
       "file": "og.jpg",
       "width": 1200,
       "height": 630,
-      "bytes": 62919,
-      "status": "captured"
+      "bytes": 49554,
+      "status": "captured",
+      "stats": {
+        "mean": 227,
+        "std": 41,
+        "dark": 0,
+        "light": 0.27,
+        "colours": 12
+      }
     }
   ]
 }

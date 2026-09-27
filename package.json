@@ -18,7 +18,9 @@
     "icons:check": "node scripts/generate-app-icons.mjs --check",
     "meta:refresh": "node scripts/refresh-project-meta.mjs",
     "trailers": "node scripts/build-project-trailers.mjs",
-    "trailers:check": "node scripts/build-project-trailers.mjs --check"
+    "trailers:check": "node scripts/build-project-trailers.mjs --check",
+    "test:media": "node --test scripts/project-media.test.mjs",
+    "test:media:e2e": "node scripts/project-media.e2e.mjs"
   },
   "private": true,
   "dependencies": {
