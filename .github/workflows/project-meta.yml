@@ -11,7 +11,10 @@ on:
 jobs:
   card-and-icons:
     name: Card, icons and metadata are current
-    runs-on: ubuntu-latest
+    # Self-hosted (owner's decision, 2026-10-13): GitHub-hosted jobs are refused while the
+    # account's Actions billing is suspended, so Linux jobs run on the owner's own ARM64 boxes
+    # (the Kinhank and the tablet, Debian in proot, one runner per repo on each).
+    runs-on: [self-hosted, Linux]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

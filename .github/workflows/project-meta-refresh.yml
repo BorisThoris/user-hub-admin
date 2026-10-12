@@ -27,7 +27,10 @@ jobs:
   refresh:
     name: Screenshots, card, icons and metadata
     if: ${{ !contains(github.event.head_commit.message, '[meta-bot]') }}
-    runs-on: ubuntu-latest
+    # Self-hosted (owner's decision, 2026-10-13): GitHub-hosted jobs are refused while the
+    # account's Actions billing is suspended, so Linux jobs run on the owner's own ARM64 boxes
+    # (the Kinhank and the tablet, Debian in proot, one runner per repo on each).
+    runs-on: [self-hosted, Linux]
     # Cloudflare queues builds account-wide, so a burst of pushes can hold one
     # deployment for well over half an hour before it even starts.
     timeout-minutes: 120
@@ -75,7 +78,7 @@ jobs:
       - name: Install a browser for the screenshots
         if: steps.deploy.outputs.deployed == 'true'
         run: |
-          mkdir -p /tmp/pw && cd /tmp/pw
+          mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw"
           npm init -y >/dev/null
           npm install --no-audit --no-fund playwright@1
           npx playwright install --with-deps chromium
@@ -86,7 +89,7 @@ jobs:
       - name: Drive the screenshot and trailer recipes against the deployment
         if: steps.deploy.outputs.deployed == 'true'
         env:
-          PORTFOLIO_ROOT: /tmp/pw
+          PORTFOLIO_ROOT: ${{ runner.temp }}/pw
         run: node scripts/project-media.e2e.mjs --only=shots
 
       # Rendered trailers that need the GPU toolchain (Blender, NVENC) declare it
@@ -94,7 +97,7 @@ jobs:
       # (Playwright + ffmpeg, both on this runner) re-record when the app changed.
       - name: Refresh trailers, screenshots, card, icons and metadata
         env:
-          PORTFOLIO_ROOT: /tmp/pw
+          PORTFOLIO_ROOT: ${{ runner.temp }}/pw
         run: |
           if [ "${{ steps.deploy.outputs.deployed }}" = "true" ]; then
             node scripts/refresh-project-meta.mjs
