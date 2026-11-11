@@ -1,6 +1,6 @@
 {
   "slug": "user-hub-admin",
-  "capturedAt": "2026-10-13T19:50:41.020Z",
+  "capturedAt": "2026-11-11T21:17:35.406Z",
   "source": "deployment",
   "url": "https://user-hub-admin-git.pages.dev/",
   "recipe": {
@@ -27,14 +27,14 @@
       "file": "card.jpg",
       "width": 1600,
       "height": 900,
-      "bytes": 71826,
+      "bytes": 73980,
       "status": "captured",
       "stats": {
-        "mean": 230,
+        "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.235,
-        "colours": 10
+        "light": 0.253,
+        "colours": 11
       }
     },
     {
@@ -42,14 +42,14 @@
       "file": "desktop.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 65735,
+      "bytes": 67806,
       "status": "captured",
       "stats": {
-        "mean": 230,
+        "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.258,
-        "colours": 13
+        "light": 0.262,
+        "colours": 12
       }
     },
     {
@@ -57,14 +57,14 @@
       "file": "mobile.jpg",
       "width": 430,
       "height": 932,
-      "bytes": 25917,
+      "bytes": 26600,
       "status": "captured",
       "stats": {
-        "mean": 231,
-        "std": 37,
+        "mean": 232,
+        "std": 36,
         "dark": 0,
-        "light": 0.219,
-        "colours": 27
+        "light": 0.218,
+        "colours": 29
       }
     },
     {
@@ -72,14 +72,14 @@
       "file": "full.jpg",
       "width": 1440,
       "height": 900,
-      "bytes": 56889,
+      "bytes": 57967,
       "status": "captured",
       "stats": {
-        "mean": 230,
+        "mean": 231,
         "std": 36,
         "dark": 0,
-        "light": 0.256,
-        "colours": 13
+        "light": 0.265,
+        "colours": 12
       }
     },
     {
@@ -87,14 +87,14 @@
       "file": "og.jpg",
       "width": 1200,
       "height": 630,
-      "bytes": 48886,
+      "bytes": 50043,
       "status": "captured",
       "stats": {
         "mean": 227,
         "std": 41,
         "dark": 0,
-        "light": 0.258,
-        "colours": 12
+        "light": 0.273,
+        "colours": 11
       }
     }
   ]
