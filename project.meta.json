@@ -1,7 +1,7 @@
 {
   "$schema": "./scripts/project.meta.schema.json",
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T19:50:41.628Z",
+  "generatedAt": "2026-11-12T00:28:02.411Z",
   "generatedBy": "scripts/generate-project-meta.mjs",
   "identity": {
     "slug": "user-hub-admin",
@@ -80,46 +80,46 @@
         "profile": "card",
         "file": "card.jpg",
         "path": "project-media/card.jpg",
-        "bytes": 71826,
+        "bytes": 72439,
         "width": 1600,
         "height": 900,
-        "capturedAt": "2026-10-13T19:50:13.612Z"
+        "capturedAt": "2026-11-12T00:27:33.099Z"
       },
       {
         "profile": "desktop",
         "file": "desktop.jpg",
         "path": "project-media/desktop.jpg",
-        "bytes": 65735,
+        "bytes": 65745,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-10-13T19:50:20.360Z"
+        "capturedAt": "2026-11-12T00:27:39.943Z"
       },
       {
         "profile": "full",
         "file": "full.jpg",
         "path": "project-media/full.jpg",
-        "bytes": 56889,
+        "bytes": 55904,
         "width": 1440,
         "height": 900,
-        "capturedAt": "2026-10-13T19:50:33.440Z"
+        "capturedAt": "2026-11-12T00:27:54.219Z"
       },
       {
         "profile": "mobile",
         "file": "mobile.jpg",
         "path": "project-media/mobile.jpg",
-        "bytes": 25917,
+        "bytes": 25884,
         "width": 430,
         "height": 932,
-        "capturedAt": "2026-10-13T19:50:26.504Z"
+        "capturedAt": "2026-11-12T00:27:46.723Z"
       },
       {
         "profile": "og",
         "file": "og.jpg",
         "path": "project-media/og.jpg",
-        "bytes": 48886,
+        "bytes": 48432,
         "width": 1200,
         "height": 630,
-        "capturedAt": "2026-10-13T19:50:40.136Z"
+        "capturedAt": "2026-11-12T00:28:00.899Z"
       }
     ],
     "trailers": [
@@ -202,10 +202,10 @@
   "analysisNotes": "Legacy Angular admin dashboard with local state; good archive support for CRUD/admin UI experience.",
   "git": {
     "branch": "master",
-    "head": "f49de1d",
-    "lastCommitDate": "2026-10-13T01:44:48+03:00",
-    "lastCommitSubject": "Hosted jobs move to the owner's own runners",
-    "commitCount": 39,
+    "head": "cada338",
+    "lastCommitDate": "2026-11-12T01:39:26+02:00",
+    "lastCommitSubject": "Republish the link-preview card from the new screenshots",
+    "commitCount": 42,
     "remote": "https://github.com/BorisThoris/user-hub-admin"
   },
   "readme": {
